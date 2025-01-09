@@ -1,16 +1,25 @@
 :root {
-    --primary-color: #4A90E2;
-    --primary-light: #68A5E8;
-    --secondary-color: #2C3E50;
-    --accent-color: #E74C3C;
-    --text-color: #2C3E50;
-    --light-gray: #F8FAFC;
+    --primary-color: #FF6B6B;
+    --primary-light: #FF8787;
+    --secondary-color: #4A4A4A;
+    --accent-color: #4ECDC4;
+    --accent-light: #A7E9E4;
+    --text-color: #2D3436;
+    --light-gray: #F7F9FC;
     --white: #FFFFFF;
-    --gradient-bg: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-    --border-radius: 12px;
-    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
+    --gradient-bg: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    --border-radius: 24px;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08);
+
+    /* Typography */
+    --font-primary: 'Varela Round', sans-serif;
+    --font-display: 'Comfortaa', cursive;
+
+    /* Animation Variables */
+    --float-animation-speed: 6s;
+    --float-animation-distance: 15px;
 }
 
 * {
@@ -24,10 +33,14 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-gray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1.05rem;
+    font-weight: 500;
 }
 
 /* Header and Navigation */
@@ -55,24 +68,27 @@ nav {
 }
 
 .nav-links a {
+    font-family: var(--font-primary);
     text-decoration: none;
     color: var(--secondary-color);
     margin-left: 2.5rem;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+    letter-spacing: 0;
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 3px;
     bottom: -4px;
     left: 0;
-    background-color: var(--primary-color);
+    background: var(--gradient-bg);
     transition: width 0.3s ease;
+    border-radius: 3px;
 }
 
 .nav-links a:hover::after {
@@ -82,28 +98,46 @@ nav {
 /* Hero Section */
 .hero {
     padding: 9rem 2rem 5rem;
-    background: linear-gradient(to bottom right, var(--white) 0%, var(--light-gray) 100%);
+    background: var(--light-gray);
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-    box-shadow: var(--shadow-sm);
+    gap: 4rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 80%;
+    height: 200%;
+    background: var(--accent-light);
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+    animation: float calc(var(--float-animation-speed) * 1.5) ease-in-out infinite;
 }
 
 .hero-content {
-    flex: 1;
-    padding-right: 4rem;
+    position: relative;
+    z-index: 1;
+    flex: 1.2;
+    max-width: 600px;
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-family: var(--font-display);
+    font-size: 4.2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     background: var(--gradient-bg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -113,15 +147,20 @@ nav {
     font-size: 1.25rem;
     margin-bottom: 2.5rem;
     color: var(--text-color);
-    opacity: 0.9;
+    opacity: 0.85;
     max-width: 600px;
-    line-height: 1.7;
+    line-height: 1.6;
+    letter-spacing: 0;
+    font-weight: 500;
 }
 
 .hero-image {
     flex: 1;
-    text-align: center;
+    text-align: right;
     position: relative;
+    z-index: 1;
+    max-width: 380px;
+    animation: float var(--float-animation-speed) ease-in-out infinite;
 }
 
 .hero-image img {
@@ -129,12 +168,11 @@ nav {
     height: auto;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg);
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: transform 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 .hero-image img:hover {
-    transform: perspective(1000px) rotateY(0deg);
+    transform: perspective(1000px) rotateY(0deg) translateY(-25px);
 }
 
 /* App Store Buttons */
@@ -161,10 +199,13 @@ nav {
 }
 
 .features h2 {
+    font-family: var(--font-display);
     text-align: center;
-    font-size: 2.25rem;
+    font-size: 2.4rem;
     margin-bottom: 3rem;
     color: var(--secondary-color);
+    letter-spacing: 0;
+    font-weight: 700;
 }
 
 .feature-grid {
@@ -175,40 +216,60 @@ nav {
 }
 
 .feature-card {
-    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-    border: 1px solid rgba(74, 144, 226, 0.1);
-    padding: 2.5rem;
+    background: var(--white);
     border-radius: var(--border-radius);
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    transition: all 0.4s ease;
 }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-bg);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
 }
 
 .feature-card i {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.8rem;
     color: var(--primary-color);
-    background: var(--gradient-bg);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    transition: transform 0.4s ease;
+    animation: float-reverse calc(var(--float-animation-speed) * 0.8) ease-in-out infinite;
+    display: inline-block;
+}
+
+.feature-card:hover i {
+    animation: none;
+    transform: scale(1.1) rotate(-5deg);
 }
 
 .feature-card h3 {
-    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
     margin-bottom: 0.75rem;
     color: var(--secondary-color);
+    letter-spacing: 0;
+    font-weight: 600;
 }
 
 .feature-card p {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    opacity: 0.9;
+    font-size: 1.05rem;
     line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+    font-weight: 500;
 }
 
 /* How It Works Section */
@@ -219,10 +280,13 @@ nav {
 }
 
 .how-it-works h2 {
+    font-family: var(--font-display);
     text-align: center;
-    font-size: 2.25rem;
+    font-size: 2.4rem;
     margin-bottom: 3rem;
     color: var(--secondary-color);
+    letter-spacing: 0;
+    font-weight: 700;
 }
 
 .steps {
@@ -236,21 +300,21 @@ nav {
 
 .step {
     background: var(--white);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(74, 144, 226, 0.1);
-    padding: 2rem;
     border-radius: var(--border-radius);
-    text-align: center;
-    transition: transform 0.3s ease;
+    padding: 2.5rem;
+    position: relative;
+    border: none;
+    transition: all 0.4s ease;
 }
 
 .step:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
 }
 
 .step-number {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     background: var(--gradient-bg);
     color: var(--white);
     border-radius: 50%;
@@ -258,21 +322,27 @@ nav {
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.25rem;
-    font-weight: 700;
-    font-size: 1.2rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    font-family: var(--font-display);
+    animation: pulse calc(var(--float-animation-speed) * 1.2) ease-in-out infinite;
 }
 
 .step h3 {
-    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
     margin-bottom: 0.75rem;
     color: var(--secondary-color);
+    letter-spacing: 0;
+    font-weight: 600;
 }
 
 .step p {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    opacity: 0.9;
+    font-size: 1.05rem;
     line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+    font-weight: 500;
 }
 
 /* Download Section */
@@ -292,14 +362,16 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
-    pointer-events: none;
+    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    opacity: 0.3;
 }
 
 .download h2 {
-    font-size: 2.5rem;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
     margin-bottom: 1.25rem;
     position: relative;
+    letter-spacing: -0.02em;
 }
 
 .download p {
@@ -358,10 +430,12 @@ footer {
 }
 
 .footer-column h4 {
+    font-family: var(--font-display);
     margin-bottom: 1.5rem;
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--secondary-color);
+    letter-spacing: 0;
 }
 
 .footer-column a {
@@ -371,7 +445,7 @@ footer {
     margin-bottom: 0.75rem;
     transition: all 0.3s ease;
     font-size: 1rem;
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .footer-column a:hover {
@@ -412,10 +486,11 @@ footer {
 @media (max-width: 1024px) {
     .hero {
         padding: 8rem 2rem 4rem;
+        gap: 3rem;
     }
 
-    .hero h1 {
-        font-size: 3rem;
+    .hero-image {
+        max-width: 340px;
     }
 }
 
@@ -425,15 +500,22 @@ footer {
         text-align: center;
         padding-top: 6rem;
         min-height: auto;
+        gap: 2rem;
     }
 
     .hero-content {
         padding-right: 0;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+
+    .hero-image {
+        margin: 0 auto;
+        max-width: 300px;
     }
 
     .hero h1 {
-        font-size: 3rem;
+        font-size: 3.2rem;
     }
 
     .hero p {
@@ -467,6 +549,16 @@ footer {
     .footer-content {
         gap: 3rem;
     }
+
+    .hero::before {
+        width: 100%;
+        right: -50%;
+    }
+
+    .feature-card,
+    .step {
+        padding: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -475,7 +567,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
     }
 
     .hero p {
@@ -508,5 +600,82 @@ footer {
 
     .feature-card {
         padding: 1.75rem;
+    }
+
+    .hero-image {
+        max-width: 260px;
+    }
+}
+
+/* Enhanced Animations */
+.feature-card,
+.step {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover,
+.step:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Add keyframes for floating animations */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(var(--float-animation-distance));
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes float-reverse {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(calc(var(--float-animation-distance) * -1));
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Adjust mobile animations */
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-image,
+    .feature-card i,
+    .step-number,
+    .hero::before {
+        animation: none;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --float-animation-distance: 10px;
     }
 }
