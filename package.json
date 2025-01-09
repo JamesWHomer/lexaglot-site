@@ -4,7 +4,8 @@
     "description": "Landing page for Lexaglot AI language learning app",
     "main": "index.html",
     "scripts": {
-        "start": "serve ."
+        "start": "serve .",
+        "build": "cp -r * dist/ || true"
     },
     "dependencies": {
         "serve": "^14.2.1"
