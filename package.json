@@ -1,0 +1,15 @@
+{
+    "name": "lexaglot-landing",
+    "version": "1.0.0",
+    "description": "Landing page for Lexaglot AI language learning app",
+    "main": "index.html",
+    "scripts": {
+        "start": "serve ."
+    },
+    "dependencies": {
+        "serve": "^14.2.1"
+    },
+    "devDependencies": {},
+    "author": "Lexaglot",
+    "license": "MIT"
+}
