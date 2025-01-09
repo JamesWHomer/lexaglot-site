@@ -1,16 +1,10 @@
 {
     "name": "lexaglot-landing",
     "version": "1.0.0",
-    "description": "Landing page for Lexaglot AI language learning app",
-    "main": "index.html",
+    "description": "Lexaglot Landing Page",
     "scripts": {
-        "start": "serve .",
-        "build": "cp -r * dist/ || true"
+        "build": "mkdir -p dist && cp -r *.html *.css *.js *.svg *.png *.jpg *.ico dist/ || true"
     },
-    "dependencies": {
-        "serve": "^14.2.1"
-    },
-    "devDependencies": {},
-    "author": "Lexaglot",
-    "license": "MIT"
+    "author": "",
+    "license": "ISC"
 }
