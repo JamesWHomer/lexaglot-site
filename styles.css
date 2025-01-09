@@ -1,6 +1,6 @@
 :root {
     --primary-color: #2196F3;
-    --primary-light: #64B5F6;
+    --primary-light: #006AA7;
     --secondary-color: #424242;
     --accent-color: #FF4081;
     --text-color: #333333;
@@ -280,6 +280,25 @@ nav {
     margin-left: auto;
     margin-right: auto;
     position: relative;
+}
+
+.download .app-store-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    justify-content: center;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.download .app-store-buttons img {
+    height: 44px;
+    transition: transform 0.3s ease;
+}
+
+.download .app-store-buttons img:hover {
+    transform: scale(1.05);
 }
 
 /* Footer */
