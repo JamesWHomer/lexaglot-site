@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Lexaglot Landing Page",
     "scripts": {
-        "build": "mkdir -p dist && cp -r *.html *.css *.js *.svg *.png *.jpg *.ico dist/ || true"
+        "build": "mkdir -p build && cp -r index.html styles.css site.webmanifest images build/"
     },
     "author": "",
     "license": "ISC"

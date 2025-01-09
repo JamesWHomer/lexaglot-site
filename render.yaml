@@ -3,7 +3,7 @@ services:
     name: lexaglot-site
     env: static
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    staticPublishPath: build
     pullRequestPreviewsEnabled: true
     headers:
       - path: /*
