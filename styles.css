@@ -185,7 +185,7 @@ nav {
 .store-button {
     position: relative;
     display: inline-block;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .store-button:hover {
@@ -194,12 +194,29 @@ nav {
 
 .store-button img {
     height: 44px;
-    filter: grayscale(0.6) opacity(0.8);
+    filter: grayscale(0.4) opacity(0.85);
     transition: all 0.3s ease;
 }
 
 .store-button:hover img {
-    filter: grayscale(0.4) opacity(0.9);
+    filter: grayscale(0.2) opacity(0.95);
+}
+
+.status-label {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+}
+
+.store-button:hover .status-label {
+    opacity: 0.9;
 }
 
 .coming-soon-label {
@@ -435,6 +452,10 @@ nav {
 
 .download .app-store-buttons img:hover {
     transform: scale(1.05);
+}
+
+.download .status-label {
+    color: var(--white);
 }
 
 /* Footer */
